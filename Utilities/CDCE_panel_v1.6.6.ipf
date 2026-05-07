@@ -314,6 +314,7 @@ Function sq_butt_CalcTS_CDCE(ctrlName) : ButtonControl
 	wave/Z Cl= root:ACMCC_Export:Cl
 	wave/Z Chl= root:ACMCC_Export:Chl
 	wave/Z Org= root:ACMCC_Export:Org
+	wave/Z CE= root:ACMCC_Export:CE
 	
 	if (WaveExists(Org))
 		Duplicate/O Org, OM
@@ -333,11 +334,11 @@ Function sq_butt_CalcTS_CDCE(ctrlName) : ButtonControl
 	
 // CalcCE_fPhase relies on the CE being 1 (or at least identical) for its calculations so save the old values and replace them when we are done.
 	//  Jose suggested that we don't change the CE values in the batch table, in case something goes wrong. 
-	NH4_CEVal = 0.5
-	SO4_CEVal = 0.5
-	NO3_CEVal = 0.5
-	Cl_CEVal = 0.5
-	OM_CEVal = 0.5
+	NH4_CEVal = CE[0]
+	SO4_CEVal = CE[0]
+	NO3_CEVal = CE[0]
+	Cl_CEVal = CE[0]
+	OM_CEVal = CE[0]
 
 	// prepare global variables in squirrel panel in anticipation of calling CalcCE_fPhase  by default CE and RIE will be 1
 //	ms0_speclist="NH4,SO4,NO3,Chl,Org"
